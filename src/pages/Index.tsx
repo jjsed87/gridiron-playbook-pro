@@ -6,32 +6,24 @@ import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import PlayCard from '@/components/PlayCard';
 import PlayCategoryCard from '@/components/PlayCategoryCard';
-import { ArrowRight, BookOpen, TrendingUp, Clock, Star, Search, FilterIcon } from 'lucide-react';
+import { ArrowRight, TrendingUp, Shield, Monitor, Clock, Star, Search } from 'lucide-react';
 
-// Mock data for categories
+// Mock data for categories - updated to focus on requested categories
 const categories = [
   { 
     id: "run", 
     title: "Run Plays", 
-    description: "Power, zone, and option run plays", 
+    description: "Power, zone, and counter run plays", 
     playCount: 15, 
     icon: <TrendingUp className="h-4 w-4 text-orange-600" />,
     color: "#ED8936" 
-  },
-  { 
-    id: "pass", 
-    title: "Pass Plays", 
-    description: "Short, medium, and deep passing concepts", 
-    playCount: 18, 
-    icon: <BookOpen className="h-4 w-4 text-blue-600" />,
-    color: "#3182CE" 
   },
   { 
     id: "protection", 
     title: "Pass Protection", 
     description: "Protection schemes for passing plays", 
     playCount: 12, 
-    icon: <BookOpen className="h-4 w-4 text-purple-600" />,
+    icon: <Shield className="h-4 w-4 text-purple-600" />,
     color: "#805AD5" 
   },
   { 
@@ -39,12 +31,12 @@ const categories = [
     title: "Screen Plays", 
     description: "RB, WR, and TE screen concepts", 
     playCount: 8, 
-    icon: <BookOpen className="h-4 w-4 text-teal-600" />,
+    icon: <Monitor className="h-4 w-4 text-teal-600" />,
     color: "#2C7A7B" 
   }
 ];
 
-// Mock data for plays
+// Updated mock data for plays - removed placeholders
 const recentPlays = [
   { 
     id: "p1", 
@@ -61,18 +53,11 @@ const recentPlays = [
     imageUrl: "https://fadeawayfootball.com/wp-content/uploads/2019/08/Inside-Zone-Run-569x400.jpg" 
   },
   { 
-    id: "p3", 
-    title: "Curl Flat", 
-    category: "Pass", 
-    formation: "Trips Right", 
-    imageUrl: "https://example.com/placeholder.svg" 
-  },
-  { 
-    id: "p4", 
-    title: "4 Verts", 
-    category: "Pass", 
-    formation: "Spread", 
-    imageUrl: "https://example.com/placeholder.svg" 
+    id: "p5", 
+    title: "ATLANTA / FALCONS", 
+    category: "Run", 
+    formation: "Various", 
+    imageUrl: "public/lovable-uploads/c292e911-0413-4f67-8be6-066fa4e41fe4.png" 
   }
 ];
 
@@ -108,7 +93,7 @@ const Index: React.FC = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {categories.map((category) => (
               <PlayCategoryCard 
                 key={category.id}
@@ -144,7 +129,7 @@ const Index: React.FC = () => {
             </TabsList>
             
             <TabsContent value="recent" className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {recentPlays.map((play) => (
                   <PlayCard
                     key={play.id}
@@ -161,7 +146,7 @@ const Index: React.FC = () => {
             </TabsContent>
             
             <TabsContent value="favorites" className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {recentPlays
                   .filter(play => favorites.includes(play.id))
                   .map((play) => (

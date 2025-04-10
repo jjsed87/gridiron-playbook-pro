@@ -5,7 +5,7 @@ import Header from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import PlayCard from '@/components/PlayCard';
-import { Search, FilterIcon, SlidersHorizontal, ArrowLeft } from 'lucide-react';
+import { Search, SlidersHorizontal, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // Mock data for categories
@@ -31,38 +31,10 @@ const categories = {
       },
       { 
         id: "p5", 
-        title: "Counter", 
+        title: "ATLANTA / FALCONS", 
         category: "Run", 
-        formation: "Pistol", 
-        imageUrl: "/placeholder.svg" 
-      },
-      { 
-        id: "p6", 
-        title: "Draw", 
-        category: "Run", 
-        formation: "Shotgun", 
-        imageUrl: "/placeholder.svg" 
-      }
-    ]
-  },
-  "pass": { 
-    id: "pass", 
-    title: "Pass Plays", 
-    description: "Short, medium, and deep passing concepts", 
-    plays: [
-      { 
-        id: "p3", 
-        title: "Curl Flat", 
-        category: "Pass", 
-        formation: "Trips Right", 
-        imageUrl: "/placeholder.svg" 
-      },
-      { 
-        id: "p4", 
-        title: "4 Verts", 
-        category: "Pass", 
-        formation: "Spread", 
-        imageUrl: "/placeholder.svg" 
+        formation: "Various", 
+        imageUrl: "public/lovable-uploads/c292e911-0413-4f67-8be6-066fa4e41fe4.png" 
       }
     ]
   },
@@ -76,14 +48,14 @@ const categories = {
         title: "Half-Slide", 
         category: "Protection", 
         formation: "Shotgun", 
-        imageUrl: "/placeholder.svg" 
+        imageUrl: "https://res.cloudinary.com/hslry6ksp/image/upload/v1610303417/pass-protection/half-slide-protection.jpg" 
       },
       { 
         id: "pr2", 
         title: "Max Protect", 
         category: "Protection", 
         formation: "I-Formation", 
-        imageUrl: "/placeholder.svg" 
+        imageUrl: "https://qb-universe.com/wp-content/uploads/2023/01/maxprotection-768x530.jpg" 
       }
     ]
   },
@@ -97,14 +69,14 @@ const categories = {
         title: "HB Screen", 
         category: "Screen", 
         formation: "Shotgun 3WR", 
-        imageUrl: "/placeholder.svg" 
+        imageUrl: "https://s3media.247sports.com/Uploads/Assets/721/788/10788721.jpg" 
       },
       { 
         id: "sc2", 
         title: "Bubble Screen", 
         category: "Screen", 
         formation: "Trips Left", 
-        imageUrl: "/placeholder.svg" 
+        imageUrl: "https://i0.wp.com/chipwagleyfootball.com/wp-content/uploads/2018/01/Bubble-Screen.jpg" 
       }
     ]
   }
@@ -175,7 +147,7 @@ const CategoryPage: React.FC = () => {
         </div>
         
         {filteredPlays.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredPlays.map((play) => (
               <PlayCard
                 key={play.id}

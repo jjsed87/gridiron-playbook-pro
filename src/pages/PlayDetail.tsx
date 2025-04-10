@@ -32,8 +32,37 @@ import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/components/ui/use-toast';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-// Mock data - would come from API
-const mockPlayData = {
+// Define interfaces for better type safety
+interface PlayAssignment {
+  position: string;
+  assignment: string;
+}
+
+interface DiagramItem {
+  title: string;
+  imageUrl: string;
+}
+
+interface BasePlayData {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  formation: string;
+  imageUrl: string;
+  assignments: PlayAssignment[];
+  notes: string;
+}
+
+interface AdvancedPlayData extends BasePlayData {
+  diagrams?: DiagramItem[];
+  keyPoints?: string[];
+  scheme?: string;
+  personnel?: string;
+}
+
+// Mock data with types applied
+const mockPlayData: Record<string, AdvancedPlayData> = {
   "p1": {
     id: "p1",
     title: "Power Right",
@@ -118,7 +147,7 @@ const PlayDetail: React.FC = () => {
   const { toast } = useToast();
   
   // In a real app, fetch data based on id
-  const playData = mockPlayData[id as keyof typeof mockPlayData];
+  const playData = id ? mockPlayData[id] : undefined;
   
   const [personalNotes, setPersonalNotes] = useState("");
   const [activeTab, setActiveTab] = useState("diagram");
@@ -173,12 +202,12 @@ const PlayDetail: React.FC = () => {
               </TabsList>
               
               <TabsContent value="diagram" className="mt-0">
-                {playData.diagrams ? (
+                {playData.diagrams && playData.diagrams.length > 0 ? (
                   <div>
                     <Card className="bg-white mb-4">
                       <div className="aspect-[16/9] bg-muted relative overflow-hidden">
                         <img 
-                          src={playData.diagrams[activeDiagramIndex].imageUrl || "/placeholder.svg"} 
+                          src={playData.diagrams[activeDiagramIndex].imageUrl} 
                           alt={`${playData.title} diagram`} 
                           className="object-contain w-full h-full"
                         />
@@ -203,7 +232,7 @@ const PlayDetail: React.FC = () => {
                       </div>
                     )}
                     
-                    {playData.keyPoints && (
+                    {playData.keyPoints && playData.keyPoints.length > 0 && (
                       <Card>
                         <CardHeader>
                           <CardTitle>Key Points</CardTitle>
@@ -222,7 +251,7 @@ const PlayDetail: React.FC = () => {
                   <Card className="bg-white mb-4">
                     <div className="aspect-[16/9] bg-muted relative overflow-hidden">
                       <img 
-                        src={playData.imageUrl || "/placeholder.svg"} 
+                        src={playData.imageUrl} 
                         alt={`${playData.title} diagram`} 
                         className="object-contain w-full h-full"
                       />
