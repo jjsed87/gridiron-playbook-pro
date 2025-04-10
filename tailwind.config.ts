@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -51,6 +52,17 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				// School colors
+				purple: {
+					DEFAULT: '#9b87f5',
+					dark: '#7e69ab',
+					light: '#b9abf8'
+				},
+				teal: {
+					DEFAULT: '#20B2AA',
+					dark: '#008080',
+					light: '#40E0D0'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
