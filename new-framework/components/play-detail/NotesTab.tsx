@@ -17,8 +17,14 @@ const NotesTab: React.FC<NotesTabProps> = ({ notes }) => {
       <CardHeader>
         <CardTitle>Coach's Notes</CardTitle>
       </CardHeader>
-      <CardContent>
-        <p className="whitespace-pre-line">{notes}</p>
+      <CardContent className="space-y-4">
+        {notes.split('\n').map((paragraph, index) => (
+          paragraph.trim() ? (
+            <p key={index} className="text-sm">{paragraph}</p>
+          ) : (
+            <div key={index} className="h-2" />
+          )
+        ))}
       </CardContent>
     </Card>
   );

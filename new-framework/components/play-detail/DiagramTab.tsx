@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -17,6 +17,14 @@ interface DiagramTabProps {
   setActiveDiagramIndex: (index: number) => void;
 }
 
+// More reliable football-related image fallbacks
+const FALLBACK_IMAGES = [
+  "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=1000",
+  "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=1000",
+  "https://images.unsplash.com/photo-1610216705422-caa3fcb6d158?q=80&w=1000",
+  "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1000",
+];
+
 const DiagramTab: React.FC<DiagramTabProps> = ({
   diagrams,
   keyPoints,
@@ -24,6 +32,22 @@ const DiagramTab: React.FC<DiagramTabProps> = ({
   activeDiagramIndex,
   setActiveDiagramIndex,
 }) => {
+  const [mainImageError, setMainImageError] = useState(false);
+  const [diagramErrors, setDiagramErrors] = useState<Record<number, boolean>>({});
+  
+  const handleMainImageError = () => {
+    setMainImageError(true);
+  };
+  
+  const handleDiagramError = (index: number) => {
+    setDiagramErrors(prev => ({...prev, [index]: true}));
+  };
+  
+  // Get fallback image based on index
+  const getFallbackImage = (index: number) => {
+    return FALLBACK_IMAGES[index % FALLBACK_IMAGES.length];
+  };
+
   return (
     <div>
       {diagrams && diagrams.length > 0 ? (
@@ -31,9 +55,12 @@ const DiagramTab: React.FC<DiagramTabProps> = ({
           <Card className="bg-white mb-4">
             <div className="aspect-[16/9] bg-muted relative overflow-hidden">
               <img
-                src={diagrams[activeDiagramIndex].imageUrl}
+                src={diagramErrors[activeDiagramIndex] 
+                  ? getFallbackImage(activeDiagramIndex) 
+                  : diagrams[activeDiagramIndex].imageUrl}
                 alt="Play diagram"
                 className="object-contain w-full h-full"
+                onError={() => handleDiagramError(activeDiagramIndex)}
               />
             </div>
             <div className="p-3">
@@ -75,9 +102,10 @@ const DiagramTab: React.FC<DiagramTabProps> = ({
         <Card className="bg-white mb-4">
           <div className="aspect-[16/9] bg-muted relative overflow-hidden">
             <img
-              src={imageUrl}
+              src={mainImageError ? FALLBACK_IMAGES[0] : imageUrl}
               alt="Play diagram"
               className="object-contain w-full h-full"
+              onError={handleMainImageError}
             />
           </div>
         </Card>

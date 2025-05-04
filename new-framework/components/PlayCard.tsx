@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Eye, FileText, Bookmark, BookmarkMinus } from 'lucide-react';
@@ -15,6 +15,14 @@ interface PlayCardProps {
   onToggleFavorite?: (id: string) => void;
 }
 
+// More reliable football play diagram fallback images
+const FALLBACK_IMAGES = [
+  "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=1000",
+  "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=1000",
+  "https://images.unsplash.com/photo-1610216705422-caa3fcb6d158?q=80&w=1000",
+  "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1000",
+];
+
 const PlayCard: React.FC<PlayCardProps> = ({ 
   id, 
   title, 
@@ -25,6 +33,19 @@ const PlayCard: React.FC<PlayCardProps> = ({
   onToggleFavorite
 }) => {
   const navigate = useNavigate();
+  const [imageError, setImageError] = useState(false);
+  
+  // Generate a consistent fallback image based on the play ID
+  const getFallbackImage = () => {
+    // Use the last character of the ID to select an image from the array
+    const idLastChar = id.charAt(id.length - 1);
+    const index = parseInt(idLastChar, 36) % FALLBACK_IMAGES.length;
+    return FALLBACK_IMAGES[index];
+  };
+  
+  const handleImageError = () => {
+    setImageError(true);
+  };
   
   const viewPlay = () => {
     navigate(`/play/${id}`);
@@ -41,9 +62,10 @@ const PlayCard: React.FC<PlayCardProps> = ({
     <Card className="play-card cursor-pointer overflow-hidden flex flex-col" onClick={viewPlay}>
       <div className="aspect-[16/9] bg-muted relative overflow-hidden">
         <img 
-          src={imageUrl} 
+          src={imageError ? getFallbackImage() : imageUrl} 
           alt={`${title} diagram`} 
           className="object-cover w-full h-full"
+          onError={handleImageError}
         />
         <div className="absolute top-2 right-2">
           <Button 
