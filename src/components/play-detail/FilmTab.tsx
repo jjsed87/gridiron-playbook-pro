@@ -22,12 +22,12 @@ interface FilmTabProps {
   imageUrl?: string;
 }
 
-// Default football diagram image URLs that are known to work
+// More reliable football-related image fallbacks
 const FALLBACK_IMAGES = [
-  "https://i.imgur.com/LQAQZfZ.png",
-  "https://i.imgur.com/Y7LlFEm.png",
-  "https://i.imgur.com/5eKNyOC.png",
-  "https://i.imgur.com/H1IBMvo.png"
+  "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=1000",
+  "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=1000",
+  "https://images.unsplash.com/photo-1610216705422-caa3fcb6d158?q=80&w=1000",
+  "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1000",
 ];
 
 const FilmTab: React.FC<FilmTabProps> = ({ diagrams, imageUrl }) => {
