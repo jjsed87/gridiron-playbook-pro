@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -17,6 +17,14 @@ interface DiagramTabProps {
   setActiveDiagramIndex: (index: number) => void;
 }
 
+// Default football diagram image URLs that are known to work
+const FALLBACK_IMAGES = [
+  "https://i.imgur.com/LQAQZfZ.png",
+  "https://i.imgur.com/Y7LlFEm.png",
+  "https://i.imgur.com/5eKNyOC.png",
+  "https://i.imgur.com/H1IBMvo.png"
+];
+
 const DiagramTab: React.FC<DiagramTabProps> = ({
   diagrams,
   keyPoints,
@@ -24,6 +32,22 @@ const DiagramTab: React.FC<DiagramTabProps> = ({
   activeDiagramIndex,
   setActiveDiagramIndex,
 }) => {
+  const [mainImageError, setMainImageError] = useState(false);
+  const [diagramErrors, setDiagramErrors] = useState<Record<number, boolean>>({});
+  
+  const handleMainImageError = () => {
+    setMainImageError(true);
+  };
+  
+  const handleDiagramError = (index: number) => {
+    setDiagramErrors(prev => ({...prev, [index]: true}));
+  };
+  
+  // Get fallback image based on index
+  const getFallbackImage = (index: number) => {
+    return FALLBACK_IMAGES[index % FALLBACK_IMAGES.length];
+  };
+
   return (
     <div>
       {diagrams && diagrams.length > 0 ? (
@@ -31,9 +55,12 @@ const DiagramTab: React.FC<DiagramTabProps> = ({
           <Card className="bg-white mb-4">
             <div className="aspect-[16/9] bg-muted relative overflow-hidden">
               <img
-                src={diagrams[activeDiagramIndex].imageUrl}
+                src={diagramErrors[activeDiagramIndex] 
+                  ? getFallbackImage(activeDiagramIndex) 
+                  : diagrams[activeDiagramIndex].imageUrl}
                 alt="Play diagram"
                 className="object-contain w-full h-full"
+                onError={() => handleDiagramError(activeDiagramIndex)}
               />
             </div>
             <div className="p-3">
@@ -75,9 +102,10 @@ const DiagramTab: React.FC<DiagramTabProps> = ({
         <Card className="bg-white mb-4">
           <div className="aspect-[16/9] bg-muted relative overflow-hidden">
             <img
-              src={imageUrl}
+              src={mainImageError ? FALLBACK_IMAGES[0] : imageUrl}
               alt="Play diagram"
               className="object-contain w-full h-full"
+              onError={handleMainImageError}
             />
           </div>
         </Card>

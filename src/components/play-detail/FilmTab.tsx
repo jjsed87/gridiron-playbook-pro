@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -22,7 +22,26 @@ interface FilmTabProps {
   imageUrl?: string;
 }
 
+// Default football diagram image URLs that are known to work
+const FALLBACK_IMAGES = [
+  "https://i.imgur.com/LQAQZfZ.png",
+  "https://i.imgur.com/Y7LlFEm.png",
+  "https://i.imgur.com/5eKNyOC.png",
+  "https://i.imgur.com/H1IBMvo.png"
+];
+
 const FilmTab: React.FC<FilmTabProps> = ({ diagrams, imageUrl }) => {
+  const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
+  
+  const handleImageError = (index: number) => {
+    setImageErrors(prev => ({...prev, [index]: true}));
+  };
+  
+  // Get fallback image based on index
+  const getFallbackImage = (index: number) => {
+    return FALLBACK_IMAGES[index % FALLBACK_IMAGES.length];
+  };
+
   // If we have diagrams, display them in a carousel
   if (diagrams && diagrams.length > 0) {
     return (
@@ -41,9 +60,10 @@ const FilmTab: React.FC<FilmTabProps> = ({ diagrams, imageUrl }) => {
                       <CardContent className="p-0">
                         <AspectRatio ratio={16 / 9}>
                           <img 
-                            src={diagram.imageUrl} 
+                            src={imageErrors[index] ? getFallbackImage(index) : diagram.imageUrl} 
                             alt={diagram.title}
-                            className="object-contain w-full h-full rounded-md" 
+                            className="object-contain w-full h-full rounded-md"
+                            onError={() => handleImageError(index)}
                           />
                         </AspectRatio>
                       </CardContent>

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Eye, FileText, Bookmark, BookmarkMinus } from 'lucide-react';
@@ -15,6 +15,9 @@ interface PlayCardProps {
   onToggleFavorite?: (id: string) => void;
 }
 
+// Fallback football play diagram
+const FALLBACK_IMAGE = "https://i.imgur.com/LQAQZfZ.png";
+
 const PlayCard: React.FC<PlayCardProps> = ({ 
   id, 
   title, 
@@ -25,6 +28,11 @@ const PlayCard: React.FC<PlayCardProps> = ({
   onToggleFavorite
 }) => {
   const navigate = useNavigate();
+  const [imageError, setImageError] = useState(false);
+  
+  const handleImageError = () => {
+    setImageError(true);
+  };
   
   const viewPlay = () => {
     navigate(`/play/${id}`);
@@ -41,9 +49,10 @@ const PlayCard: React.FC<PlayCardProps> = ({
     <Card className="play-card cursor-pointer overflow-hidden flex flex-col" onClick={viewPlay}>
       <div className="aspect-[16/9] bg-muted relative overflow-hidden">
         <img 
-          src={imageUrl} 
+          src={imageError ? FALLBACK_IMAGE : imageUrl} 
           alt={`${title} diagram`} 
           className="object-cover w-full h-full"
+          onError={handleImageError}
         />
         <div className="absolute top-2 right-2">
           <Button 
