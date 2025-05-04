@@ -29,7 +29,7 @@ const FilmTab: React.FC<FilmTabProps> = ({ diagrams, imageUrl }) => {
       <Card>
         <CardHeader>
           <CardTitle>Film Study</CardTitle>
-          <CardDescription>Video examples of this play</CardDescription>
+          <CardDescription>Video examples and diagrams of this play</CardDescription>
         </CardHeader>
         <CardContent>
           <Carousel className="w-full">

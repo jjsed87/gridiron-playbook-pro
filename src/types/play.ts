@@ -40,6 +40,14 @@ export const mockPlayData: Record<string, AdvancedPlayData> = {
       {
         title: "Power Right vs. 4-3 Defense",
         imageUrl: "https://th.bing.com/th/id/OIP.Fvrt-j-BDLKu5_WVEWI6ywHaFL?rs=1&pid=ImgDetMain"
+      },
+      {
+        title: "Power Right vs. 3-4 Defense",
+        imageUrl: "https://www.footballxos.com/download/attachment.php?id=5432"
+      },
+      {
+        title: "Power Right Game Film",
+        imageUrl: "https://i.ytimg.com/vi/H8fhanOvBGs/maxresdefault.jpg"
       }
     ],
     keyPoints: [
@@ -75,6 +83,18 @@ export const mockPlayData: Record<string, AdvancedPlayData> = {
       {
         title: "Inside Zone Left from Shotgun",
         imageUrl: "https://fadeawayfootball.com/wp-content/uploads/2019/08/Inside-Zone-Run-569x400.jpg"
+      },
+      {
+        title: "Inside Zone vs. Even Front",
+        imageUrl: "https://www.viqtorysports.com/wp-content/uploads/2018/11/Inside-Zone-Read.png"
+      },
+      {
+        title: "Inside Zone Game Film",
+        imageUrl: "https://i.ytimg.com/vi/RX9-V1XVGOM/maxresdefault.jpg"
+      },
+      {
+        title: "Inside Zone Blocking Rules",
+        imageUrl: "https://www.footballoutsiders.com/images/Walkthrough/Walkthrough-081918-01.jpg"
       }
     ],
     keyPoints: [
@@ -115,6 +135,14 @@ export const mockPlayData: Record<string, AdvancedPlayData> = {
       {
         title: "Diagram B: Counter vs. 4i/Tite Front (Tite 3-4)",
         imageUrl: "public/lovable-uploads/9e11bf2e-157e-467e-9ace-ec17f59a91a6.png"
+      },
+      {
+        title: "Counter Trey Execution",
+        imageUrl: "https://i.pinimg.com/originals/08/7f/c9/087fc9df108645cb5b35ee18a91cf5b2.jpg"
+      },
+      {
+        title: "Counter Game Film",
+        imageUrl: "https://i.ytimg.com/vi/Dj6n-Uvo93w/maxresdefault.jpg"
       }
     ],
     keyPoints: [
@@ -150,6 +178,18 @@ export const mockPlayData: Record<string, AdvancedPlayData> = {
       {
         title: "Half-Slide vs. 4-3 Defense",
         imageUrl: "https://res.cloudinary.com/hslry6ksp/image/upload/v1610303417/pass-protection/half-slide-protection.jpg"
+      },
+      {
+        title: "Half-Slide vs. Blitz",
+        imageUrl: "https://i0.wp.com/matchquarters.com/wp-content/uploads/2016/10/slide.jpg"
+      },
+      {
+        title: "Half-Slide Protection Rules",
+        imageUrl: "https://i2.wp.com/matchquarters.com/wp-content/uploads/2016/10/LIZ-protections.jpg"
+      },
+      {
+        title: "Half-Slide Game Film",
+        imageUrl: "https://i.ytimg.com/vi/M3LIlvNsomg/maxresdefault.jpg"
       }
     ],
     keyPoints: [
@@ -184,6 +224,18 @@ export const mockPlayData: Record<string, AdvancedPlayData> = {
       {
         title: "Max Protect vs. Zone Blitz",
         imageUrl: "https://qb-universe.com/wp-content/uploads/2023/01/maxprotection-768x530.jpg"
+      },
+      {
+        title: "Max Protect vs. Corner Blitz",
+        imageUrl: "https://i.ytimg.com/vi/mYTljPNUxUY/maxresdefault.jpg"
+      },
+      {
+        title: "7-Man Protection Rules",
+        imageUrl: "https://i0.wp.com/matchquarters.com/wp-content/uploads/2017/05/BOB-PROTECTION-RULES.jpg"
+      },
+      {
+        title: "Max Protect Game Film",
+        imageUrl: "https://i.ytimg.com/vi/hsWVgxDkCJo/maxresdefault.jpg"
       }
     ],
     keyPoints: [
@@ -219,6 +271,18 @@ export const mockPlayData: Record<string, AdvancedPlayData> = {
       {
         title: "HB Screen vs. 4-2-5 Defense",
         imageUrl: "https://s3media.247sports.com/Uploads/Assets/721/788/10788721.jpg"
+      },
+      {
+        title: "Screen Setup and Timing",
+        imageUrl: "https://i0.wp.com/matchquarters.com/wp-content/uploads/2018/04/1.jpg"
+      },
+      {
+        title: "Screen Blocking Angles",
+        imageUrl: "https://i.pinimg.com/originals/61/1e/75/611e751b8e0bb4f6a74b54c437fe9455.jpg"
+      },
+      {
+        title: "Screen Game Film",
+        imageUrl: "https://i.ytimg.com/vi/o5OYx1A0Y-Y/maxresdefault.jpg"
       }
     ],
     keyPoints: [
@@ -254,6 +318,18 @@ export const mockPlayData: Record<string, AdvancedPlayData> = {
       {
         title: "Bubble Screen from Trips Formation",
         imageUrl: "https://i0.wp.com/chipwagleyfootball.com/wp-content/uploads/2018/01/Bubble-Screen.jpg"
+      },
+      {
+        title: "Bubble Screen vs. Man Coverage",
+        imageUrl: "https://i.pinimg.com/originals/cc/fa/77/ccfa77d4b890b8d7349720a94b1277ef.jpg"
+      },
+      {
+        title: "Bubble RPO Concept",
+        imageUrl: "https://www.boomersdailypro.com/img/articles/rpo-screen-game-0.jpg"
+      },
+      {
+        title: "Bubble Screen Game Film",
+        imageUrl: "https://i.ytimg.com/vi/Z9NX8WRXYs4/maxresdefault.jpg"
       }
     ],
     keyPoints: [
@@ -275,3 +351,4 @@ export const mockPlayData: Record<string, AdvancedPlayData> = {
     notes: "Bubble screen works best against defenses playing off coverage or committing extra defenders to the box. Timing and blocking angles are critical to success. This can be packaged as an RPO with inside zone or other run plays. QB must read the appropriate defender (usually outside linebacker or nickel) to determine hand-off or bubble throw."
   }
 };
+
