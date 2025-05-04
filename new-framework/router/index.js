@@ -1,10 +1,10 @@
 // Basic client-side router for the playbook
 const routes = {
     '/': () => import('../pages/Index.js'),
-    '/playbook': () => import('../pages/Playbook.js'),
-    '/play-detail': () => import('../pages/PlayDetail.js'),
-    '/video-library': () => import('../pages/VideoLibrary.js'),
-    '/404': () => import('../pages/NotFound.js'),
+    '/playbook': () => import('../pages/Playbook.tsx'),
+    '/play-detail': () => import('../pages/PlayDetail.tsx'),
+    '/video-library': () => import('../pages/VideoLibrary.tsx'),
+    '/404': () => import('../pages/NotFound.tsx'),
 };
 
 const appDiv = document.getElementById('app');
