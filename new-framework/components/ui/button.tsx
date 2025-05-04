@@ -54,3 +54,21 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
+
+import React from 'react';
+import { cn } from '@/lib/utils';
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'ghost';
+  size?: 'icon';
+}
+
+export const Button: React.FC<ButtonProps> = ({ variant, size, className, ...props }) => {
+  const baseStyles = 'inline-flex items-center justify-center rounded-md focus:outline-none';
+  const variantStyles = variant === 'ghost' ? 'bg-transparent hover:bg-gray-100' : '';
+  const sizeStyles = size === 'icon' ? 'p-2' : 'px-4 py-2';
+
+  return (
+    <button className={cn(baseStyles, variantStyles, sizeStyles, className)} {...props} />
+  );
+};

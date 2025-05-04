@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -26,6 +25,9 @@ const Navigation: React.FC<NavigationProps> = ({ className }) => {
           </Button>
         </Link>
       ))}
+      <Link to="/videos" className="text-white hover:text-purple-300">
+        Videos
+      </Link>
     </nav>
   );
 };

@@ -5,7 +5,13 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-const Sheet = SheetPrimitive.Root
+interface SheetProps {
+  children: React.ReactNode;
+}
+
+export const Sheet: React.FC<SheetProps> = ({ children }) => {
+  return <div className="fixed inset-0 z-50">{children}</div>;
+};
 
 const SheetTrigger = SheetPrimitive.Trigger
 
