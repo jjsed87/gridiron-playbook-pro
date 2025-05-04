@@ -1,4 +1,3 @@
-
 export interface PlayAssignment {
   position: string;
   assignment: string;
@@ -22,6 +21,7 @@ export interface BasePlayData {
   keyPoints?: string[];
   scheme?: string;
   personnel?: string;
+  videoUrl?: string;
 }
 
 export type AdvancedPlayData = BasePlayData;
@@ -72,17 +72,18 @@ export const mockPlayData: Record<string, AdvancedPlayData> = {
   },
   "p2": {
     id: "p2",
-    title: "Zone Left",
+    title: "LA / RAMS",
     description: "A zone blocking concept that creates horizontal movement and gives the running back multiple cutback options based on defensive flow.",
     category: "Run",
     scheme: "Inside Zone (Zone Scheme)",
     formation: "Shotgun",
     personnel: "11 Personnel (1 RB, 1 TE)",
-    imageUrl: "https://fadeawayfootball.com/wp-content/uploads/2019/08/Inside-Zone-Run-569x400.jpg",
+    imageUrl: "/lovable-uploads/1706b55f-fbfb-4178-a6b2-818b06c89146.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=pN4wQx1nr6I",
     diagrams: [
       {
         title: "Inside Zone Left from Shotgun",
-        imageUrl: "https://fadeawayfootball.com/wp-content/uploads/2019/08/Inside-Zone-Run-569x400.jpg"
+        imageUrl: "/lovable-uploads/1706b55f-fbfb-4178-a6b2-818b06c89146.jpg"
       },
       {
         title: "Inside Zone vs. Even Front",
@@ -351,4 +352,3 @@ export const mockPlayData: Record<string, AdvancedPlayData> = {
     notes: "Bubble screen works best against defenses playing off coverage or committing extra defenders to the box. Timing and blocking angles are critical to success. This can be packaged as an RPO with inside zone or other run plays. QB must read the appropriate defender (usually outside linebacker or nickel) to determine hand-off or bubble throw."
   }
 };
-

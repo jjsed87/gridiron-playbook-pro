@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -98,6 +99,7 @@ const PlayDetail: React.FC = () => {
                 <FilmTab 
                   diagrams={playData.diagrams}
                   imageUrl={playData.imageUrl}
+                  videoUrl={playData.videoUrl}
                 />
               </TabsContent>
               
