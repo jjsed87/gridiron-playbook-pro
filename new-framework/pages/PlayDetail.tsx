@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -9,6 +10,7 @@ import DiagramTab from "@/components/play-detail/DiagramTab";
 import AssignmentsTab from "@/components/play-detail/AssignmentsTab";
 import PlayDetailsSidebar from "@/components/play-detail/PlayDetailsSidebar";
 import PersonalNotes from "@/components/play-detail/PersonalNotes";
+import FilmTab from "@/components/play-detail/FilmTab";
 
 const PlayDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -50,6 +52,7 @@ const PlayDetail: React.FC = () => {
               <TabsList>
                 <TabsTrigger value="diagram">Diagram</TabsTrigger>
                 <TabsTrigger value="assignments">Assignments</TabsTrigger>
+                <TabsTrigger value="film">Film</TabsTrigger>
               </TabsList>
               
               <TabsContent value="diagram" className="mt-6">
@@ -66,6 +69,14 @@ const PlayDetail: React.FC = () => {
                 <AssignmentsTab 
                   assignments={playData.assignments}
                   playId={playData.id}
+                />
+              </TabsContent>
+              
+              <TabsContent value="film" className="mt-6">
+                <FilmTab
+                  diagrams={playData.diagrams}
+                  imageUrl={playData.imageUrl}
+                  videoUrl={playData.videoUrl}
                 />
               </TabsContent>
             </Tabs>
